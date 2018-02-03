@@ -1,7 +1,7 @@
 {
-  "name": "nightwatch-xhr",
-  "version": "0.4.3",
-  "description": "An XHR \"Listener\" for Nightwatch.js",
+  "name": "protractor-xhr",
+  "version": "0.1.0",
+  "description": "A Protractor's XHR \"Listener\" for non-angular applications",
   "main": "lib/waitForXHR.js",
   "scripts": {
     "prepare": "babel src --out-dir es5 --copy-files --delete-dir-on-start",
@@ -9,26 +9,23 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:watch:verbose": "jest --watch --verbose",
-    "coverage": "jest --coverage --verbose",
-    "contributors:add": "all-contributors add",
-    "contributors:generate": "all-contributors generate"
+    "coverage": "jest --coverage --verbose"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cortexmg/nightwatch-xhr.git"
+    "url": "git+https://github.com/tsirlucas/protractor-xhr.git"
   },
   "keywords": [
     "ajax",
     "xhr",
-    "nightwatchjs",
-    "nightwatch"
+    "protractor"
   ],
-  "author": "orzilca <orzilca@gmail.com> (https://github.com/orzilca)",
+  "author": "tsirlucas <tsirlucas@gmail.com> (https://github.com/tsirlucas)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cortexmg/nightwatch-xhr/issues"
+    "url": "https://github.com/tsirlucas/protractor-xhr/issues"
   },
-  "homepage": "https://github.com/cortexmg/nightwatch-xhr#readme",
+  "homepage": "https://github.com/tsirlucas/protractor-xhr#readme",
   "jest": {
     "testRegex": "test/([^/]+/?){2}\\.js$",
     "moduleFileExtensions": [
@@ -39,7 +36,6 @@
     }
   },
   "devDependencies": {
-    "all-contributors-cli": "^4.10.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-jest": "^22.0.1",
@@ -47,7 +43,6 @@
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
-    "flow-bin": "^0.61.0",
     "jest": "^22.0.1"
   }
 }

@@ -43,11 +43,8 @@ describe('client', () => {
 
             expect(window.xhrListen).toBeDefined();
             expect(window.xhrListen).toHaveLength(1);
-            expect(window.xhrListen[0].status).toEqual('success');
             expect(window.xhrListen[0].method).toEqual('GET');
             expect(window.xhrListen[0].url).toEqual('http://www.google.fr');
-            expect(window.xhrListen[0].requestData).toEqual('request');
-            expect(window.xhrListen[0].responseData).toEqual('response');
             expect(window.xhrListen[0].httpResponseCode).toEqual(200);
         });
         it('saves correctly an unsuccessful call', () => {
@@ -57,25 +54,17 @@ describe('client', () => {
             xhr.open('GET', 'http://www.google.fr', 'request', 'response', false);
 
             expect(window.xhrListen).toBeDefined();
-            expect(window.xhrListen[0].status).toEqual('error');
             expect(window.xhrListen[0].method).toEqual('GET');
             expect(window.xhrListen[0].url).toEqual('http://www.google.fr');
-            expect(window.xhrListen[0].requestData).toEqual('request');
-            expect(window.xhrListen[0].responseData).toEqual('response');
             expect(window.xhrListen[0].httpResponseCode).toEqual(404);
         });
-        it('saves only request in case of timeout', () => {
+        it('don\'t save in case of timeout', () => {
             clientListen();
 
             const xhr = new XMLHttpRequest();
             xhr.open('GET', 'http://www.google.fr', 'request', 'response', false, true);
 
-            expect(window.xhrListen).toBeDefined();
-            expect(window.xhrListen[0].method).toEqual('GET');
-            expect(window.xhrListen[0].url).toEqual('http://www.google.fr');
-            expect(window.xhrListen[0].requestData).toEqual('request');
-            expect(window.xhrListen[0].responseData).toBeUndefined();
-            expect(window.xhrListen[0].httpResponseCode).toBeUndefined();
+            expect(window.xhrListen).toEqual([]);
         });
         it('saves multiple requests', () => {
             clientListen();
@@ -93,25 +82,17 @@ describe('client', () => {
                 {
                     method: 'GET',
                     url: 'https://gateway.marvel.com',
-                    requestData: 'request',
                     httpResponseCode:200,
-                    responseData: 'response',
-                    status: 'success',
                 },
                 {
                     method: 'GET',
                     url: 'http://www.google.fr',
-                    requestData: 'request',
                     httpResponseCode:404,
-                    status: 'error'
                 },
                 {
                     method: 'POST',
                     url: 'https://api.github.com',
-                    requestData: 'request',
                     httpResponseCode:200,
-                    responseData: 'response',
-                    status: 'success',
                 },
             ]));
         });
@@ -129,14 +110,12 @@ describe('client', () => {
             const result = clientPoll();
 
             expect(result).toBeDefined();
-            expect(result[0].status).toBeDefined();
-            expect(result[0].status).toEqual('success');
             expect(result[0].url).toEqual('some/url');
             expect(result[0].httpResponseCode).toEqual(200);
         });
         it('retreives empty array if no xhr has been intercepted', () => {
             const result = clientPoll();
-            expect(clientPoll()).toEqual([]);
+            expect(clientPoll()).toEqual(null);
         });
     })
 });

@@ -1,14 +1,17 @@
 export const clientListen = function () {
-    const getXhr = id => window.xhrListen.find(xhr => xhr.id === id);
-    const rand = () => Math.random() * 16 | 0;
-    const uuidV4 = () =>
-        'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
-            .replace(/[xy]/g, c => (
-                (c === 'x'
-                        ? rand()
-                        : rand() & 0x3 | 0x8
-                ).toString(16)
-            ));
+    const getXhr = function getXhr(id) {
+        return window.xhrListen.find(function (xhr) {
+            return xhr.id === id;
+        });
+    };
+    const rand = function rand() {
+        return Math.random() * 16 | 0;
+    };
+    const uuidV4 = function uuidV4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            return (c === 'x' ? rand() : rand() & 0x3 | 0x8).toString(16);
+        });
+    };
 
     window.xhrListen = [];
 
@@ -18,28 +21,19 @@ export const clientListen = function () {
 
         XMLHttpRequest.prototype.open = function (method, url) {
             this.id = uuidV4();
-            window.xhrListen.push({
-                id: this.id,
-                method,
-                url,
-                openedTime: Date.now(),
-            });
+
             this.onload = function () {
-                if (this.readyState === XMLHttpRequest.DONE) {
-                    const xhr = getXhr(this.id);
-                    if (xhr) {
-                        xhr.httpResponseCode = this.status;
-                        xhr.responseData = this.responseText;
-                        xhr.status = (this.status === 200 ? 'success' : 'error');
-                    }
-                }
+                window.xhrListen.push({
+                    method: method,
+                    url: url,
+                    httpResponseCode: this.status,
+                });
             };
             XMLHttpRequest.realOpen.apply(this, arguments);
         };
         XMLHttpRequest.prototype.send = function (data) {
             const xhr = getXhr(this.id);
-            if (xhr)
-                xhr.requestData = data;
+            if (xhr) xhr.requestData = data;
 
             XMLHttpRequest.realSend.apply(this, arguments);
         };
@@ -48,5 +42,6 @@ export const clientListen = function () {
 };
 
 export const clientPoll = function () {
-    return window.xhrListen || [];
+    if (!window.xhrListen) return null;
+    return window.xhrListen.length > 0 ? window.xhrListen : null;
 };
