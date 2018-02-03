@@ -1,4 +1,4 @@
-Protractor XHR
+# Protractor XHR
 
 We've encountered some issues with our e2e tests.
 We tried checking if clicks on specific links behave as they should (which also meant, send a POST XHR request to a tracking server).
