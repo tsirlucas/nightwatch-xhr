@@ -30,7 +30,6 @@ Calls the `trigger`, and then calls `callback` with the first xhr request corres
 The function expects these parameters:
 * urlPattern - a regex match for url pattern, will only listen to urls matching this, use '' for all urls.
 * timeout - well, timeout
-* callback - use this to assert the request after it completes
 
 ### waitForNextXHR:
 ```javascript
