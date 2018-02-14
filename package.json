@@ -20,7 +20,7 @@
     "xhr",
     "protractor"
   ],
-  "author": "tsirlucas <tsirlucas@gmail.com> (https://github.com/tsirlucas)",
+  "author": "Beakyn <contact@beakyn.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/beakyn/protractor-xhr/issues"
