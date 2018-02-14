@@ -1,6 +1,6 @@
 {
-  "name": "@beakyn/protractor-xhr",
-  "version": "0.1.1",
+  "name": "protractor-xhr",
+  "version": "0.1.2",
   "description": "A Protractor's XHR \"Listener\" for non-angular applications",
   "main": "lib/waitForXHR.js",
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tsirlucas/protractor-xhr.git"
+    "url": "git+https://github.com/beakyn/protractor-xhr.git"
   },
   "keywords": [
     "ajax",
@@ -23,9 +23,9 @@
   "author": "tsirlucas <tsirlucas@gmail.com> (https://github.com/tsirlucas)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tsirlucas/protractor-xhr/issues"
+    "url": "https://github.com/beakyn/protractor-xhr/issues"
   },
-  "homepage": "https://github.com/tsirlucas/protractor-xhr#readme",
+  "homepage": "https://github.com/beakyn/protractor-xhr#readme",
   "jest": {
     "testRegex": "test/([^/]+/?){2}\\.js$",
     "moduleFileExtensions": [
