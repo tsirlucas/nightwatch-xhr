@@ -1,5 +1,5 @@
-const util = require('util');
-const events = require('events');
+import util from 'util';
+import events from 'events';
 
 import { clientListen, clientPoll } from '../client';
 
@@ -43,7 +43,7 @@ function waitForNextXHRWithCB(urlPattern = '', delay = 1000, callback = () => {
     return this;
 }
 
-function waitForNextXHR(urlPattern, time) {
+export function waitForNextXHR(urlPattern, time) {
     return new Promise((resolve, reject) => {
         try {
             waitForNextXHRWithCB(urlPattern, time, function (xhrs) {
@@ -55,5 +55,3 @@ function waitForNextXHR(urlPattern, time) {
         }
     });
 }
-
-module.exports = waitForNextXHR;

@@ -1,4 +1,4 @@
-# Protractor XHR
+# Protractor XHR plugin
 
 We've encountered some issues with our e2e tests.
 We tried checking if clicks on specific links behave as they should (which also meant, send a POST XHR request to a tracking server).
@@ -12,13 +12,13 @@ Have fun!
 Install
 ---
 ```shell
-npm install protractor-xhr
+npm install protractor-xhr-plugin
 ```
 
 or 
 
 ```shell
-yarn add protractor-xhr
+yarn add protractor-xhr-plugin
 ```
 
 ## Commands 
@@ -33,23 +33,24 @@ The function expects these parameters:
 
 ### waitForNextXHR:
 ```javascript
-module.exports = {
-    'Catch next XHRs': function () {
-        waitForNextXHR('/some/path/regex/', 1000).then(function(xhrs) {
-            expect(xhrs.length > 0).toBe(true);
-        })
-    }
- }
+const {waitForNextXHR} = require('protractor-xhr-plugin');
+
+it('should do things', (done) => {
+   	waitForNextXHR('/some/path/regex/', 1000).then((xhrs) => {
+		expect(xhrs.length > 0).toBe(true);
+		done();
+	});	
+});
 ```
 
 ### waitForNextXHR (async/await):
 ```javascript
-module.exports = {
-    'Catch next XHRs': async function () {
-        const xhrs = await waitForNextXHR('/some/path/regex/', 1000);
-        expect(xhrs.length > 0).toBe(true);
-    }
- }
+const {waitForNextXHR} = require('protractor-xhr-plugin');
+
+it('should do things', async () => {
+   	const xhrs = await waitForNextXHR('/some/path/regex/', 1000);
+    expect(xhrs.length > 0).toBe(true);
+});
 ```
 
 The promise returns an array of objects containing the following properties :

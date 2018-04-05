@@ -1,11 +1,12 @@
 {
-  "name": "protractor-xhr",
-  "version": "0.1.2",
-  "description": "A Protractor's XHR \"Listener\" for non-angular applications",
-  "main": "lib/waitForXHR.js",
+  "name": "protractor-xhr-plugin",
+  "version": "0.1.0",
+  "description": "A Protractor's XHR \"listener\" plugin for non-angular applications",
+  "main": "lib/index.js",
   "scripts": {
-    "prepare": "babel src --out-dir es5 --copy-files --delete-dir-on-start",
-    "build:watch": "babel src --out-dir es5 --copy-files --delete-dir-on-start --watch",
+	"prepare": "babel src --out-dir lib --copy-files --delete-dir-on-start",
+	"build": "babel src --out-dir lib --copy-files --delete-dir-on-start --watch",
+    "build:watch": "babel src --out-dir lib --copy-files --delete-dir-on-start --watch",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:watch:verbose": "jest --watch --verbose",
@@ -13,19 +14,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/beakyn/protractor-xhr.git"
+    "url": "git+https://github.com/tsirlucas/protractor-xhr-plugin.git"
   },
   "keywords": [
     "ajax",
     "xhr",
     "protractor"
   ],
-  "author": "Beakyn <contact@beakyn.com>",
+  "author": "Lucas Correia <tsirlucas@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/beakyn/protractor-xhr/issues"
+    "url": "https://github.com/tsirlucas/protractor-xhr-plugin/issues"
   },
-  "homepage": "https://github.com/beakyn/protractor-xhr#readme",
+  "homepage": "https://github.com/tsirlucas/protractor-xhr-plugin#readme",
   "jest": {
     "testRegex": "test/([^/]+/?){2}\\.js$",
     "moduleFileExtensions": [
