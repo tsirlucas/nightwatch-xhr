@@ -1,11 +1,11 @@
 {
   "name": "protractor-xhr-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Protractor's XHR \"listener\" plugin for non-angular applications",
   "main": "lib/index.js",
   "scripts": {
 	"prepare": "babel src --out-dir lib --copy-files --delete-dir-on-start",
-	"build": "babel src --out-dir lib --copy-files --delete-dir-on-start --watch",
+	"build": "babel src --out-dir lib --copy-files --delete-dir-on-start",
     "build:watch": "babel src --out-dir lib --copy-files --delete-dir-on-start --watch",
     "test": "jest",
     "test:watch": "jest --watch",
